@@ -3,6 +3,7 @@ import React from 'react';
 import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
 import { Acessory } from '../../components/Acessory';
+import { Button } from '../../components/Button';
 
 import speedSvg from '../../assets/speed.svg';
 import acelerationSvg from '../../assets/acceleration.svg';
@@ -25,6 +26,7 @@ import {
   Price,
   About,
   Acessories,
+  Footer,
 } from './styles';
 
 export function CarDetails() {
@@ -71,6 +73,10 @@ export function CarDetails() {
           obcaecati minima?
         </About>
       </Content>
+
+      <Footer>
+        <Button title="Confirmar" />
+      </Footer>
     </Container>
   );
 }
