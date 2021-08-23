@@ -13,7 +13,7 @@ import {
 
 import { ThemeProvider } from 'styled-components';
 
-import { Scheduling } from './src/screens/Scheduling';
+import { SchedulingComplete } from './src/screens/SchedulingComplete';
 
 import theme from './src/styles/theme';
 
@@ -32,7 +32,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Scheduling />
+      <SchedulingComplete />
     </ThemeProvider>
   );
 }
