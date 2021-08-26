@@ -53,6 +53,7 @@ interface RentalPeriod {
 }
 
 export function SchedulingDetails() {
+  const [loading, setLoading] = useState(false);
   const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>(
     {} as RentalPeriod
   );
@@ -69,6 +70,8 @@ export function SchedulingDetails() {
   }
 
   async function handleConfirmRental() {
+    setLoading(true);
+
     const response = await api.get(`/schedules_bycars/${car.id}`);
     const unavailable_dates = [...response.data.unavailable_dates, ...dates];
 
@@ -90,6 +93,7 @@ export function SchedulingDetails() {
       navigation.navigate('SchedulingComplete');
     } catch (error) {
       Alert.alert('Não foi possível realizar o agndamento.');
+      setLoading(false);
     }
   }
 
@@ -180,6 +184,8 @@ export function SchedulingDetails() {
           title="Alugar agora"
           color={theme.colors.success}
           onPress={handleConfirmRental}
+          enabled={!loading}
+          loading={loading}
         />
       </Footer>
     </Container>
