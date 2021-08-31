@@ -20,7 +20,7 @@ import { Container, Header, HeaderContent, TotalCars, CarList } from './styles';
 
 import { CarDTO } from '../../dtos/carDTO';
 import api from '../../services/api';
-import { Loading } from '../../components/Loading';
+import { LoadAnimation } from '../../components/LoadAnimation';
 
 export function Home() {
   const [cars, setCars] = useState<CarDTO[]>([]);
@@ -97,7 +97,7 @@ export function Home() {
         </HeaderContent>
       </Header>
       {loading ? (
-        <Loading />
+        <LoadAnimation />
       ) : (
         <CarList
           data={cars}
