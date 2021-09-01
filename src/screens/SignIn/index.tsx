@@ -1,11 +1,12 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { Button } from '../../components/Button';
+
 import { useTheme } from 'styled-components';
+import { Button } from '../../components/Button';
+import { Input } from '../../components/Input';
+import { PasswordInput } from '../../components/PasswordInput';
 
 import { Container, Header, Title, SubTitle, Form, Footer } from './styles';
-
-import { Input } from '../../components/Input';
 
 export function SignIn() {
   const theme = useTheme();
@@ -33,7 +34,7 @@ export function SignIn() {
           autoCorrect={false}
           autoCapitalize="none"
         />
-        <Input iconName="lock" />
+        <PasswordInput iconName="lock" placeholder="Senha" />
       </Form>
 
       <Footer>
