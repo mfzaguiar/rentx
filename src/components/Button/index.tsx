@@ -7,6 +7,7 @@ import { Container, Title } from './styles';
 interface Props {
   title: string;
   color?: string;
+  light?: boolean;
   enabled?: boolean;
   loading?: boolean;
   onPress: () => void;
@@ -15,6 +16,7 @@ interface Props {
 export function Button({
   title,
   color,
+  light = false,
   enabled = true,
   loading = false,
   onPress,
@@ -31,7 +33,7 @@ export function Button({
       {loading ? (
         <ActivityIndicator color={theme.colors.shape} />
       ) : (
-        <Title>{title}</Title>
+        <Title light={light}>{title}</Title>
       )}
     </Container>
   );
