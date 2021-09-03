@@ -10,6 +10,7 @@ import {
   Archivo_500Medium,
   Archivo_600SemiBold,
 } from '@expo-google-fonts/archivo';
+import { AppProvider } from './src/hooks';
 
 import { ThemeProvider } from 'styled-components';
 
@@ -32,7 +33,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Routes />
+      <AppProvider>
+        <Routes />
+      </AppProvider>
     </ThemeProvider>
   );
 }
