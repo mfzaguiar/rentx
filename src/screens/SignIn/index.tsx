@@ -42,8 +42,6 @@ export function SignIn() {
         email,
         password,
       });
-
-      Alert.alert('Deu certo');
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         Alert.alert('Opa', error.message);
