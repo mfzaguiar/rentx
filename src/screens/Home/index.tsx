@@ -3,6 +3,7 @@ import { StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
+import { LoadAnimation } from '../../components/LoadAnimation';
 import { Car } from '../../components/Car';
 import Logo from '../../assets/logo.svg';
 
@@ -10,7 +11,6 @@ import { Container, Header, HeaderContent, TotalCars, CarList } from './styles';
 
 import { CarDTO } from '../../dtos/carDTO';
 import api from '../../services/api';
-import { LoadAnimation } from '../../components/LoadAnimation';
 
 export function Home() {
   const [cars, setCars] = useState<CarDTO[]>([]);
@@ -25,17 +25,27 @@ export function Home() {
   }
 
   useEffect(() => {
+    let isMounted = true;
+
     async function handleGetInitialData() {
       try {
         const response = await api.get('/cars');
-        setCars(response.data);
+
+        if (isMounted) {
+          setCars(response.data);
+        }
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     }
     handleGetInitialData();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
