@@ -14,11 +14,11 @@ import {
   CarImage,
 } from './styles';
 
-import { CarDTO } from '../../dtos/carDTO';
+import { Car as ModelCar } from '../../database/model/Car';
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
 interface Props extends RectButtonProps {
-  data: CarDTO;
+  data: ModelCar;
 }
 
 export function Car({ data, ...rest }: Props) {
