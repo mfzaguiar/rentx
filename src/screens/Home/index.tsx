@@ -36,6 +36,7 @@ export function Home() {
           `cars/sync/pull?lastPulledVersion=${lastPulledAt || 0}`
         );
         const { changes, latestVersion } = response.data;
+        console.log(changes);
         return { changes, timestamp: latestVersion };
       },
       pushChanges: async ({ changes }) => {

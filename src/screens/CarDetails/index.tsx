@@ -45,6 +45,8 @@ export function CarDetails() {
   const route = useRoute();
   const { car } = route.params as Params;
 
+  console.log(car);
+
   const theme = useTheme();
 
   const scrollY = useSharedValue(0);
