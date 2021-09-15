@@ -10,6 +10,7 @@ import { useNavigation } from '@react-navigation/core';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { useTheme } from 'styled-components';
 import { Feather } from '@expo/vector-icons';
+import { useNetInfo } from '@react-native-community/netinfo';
 import * as Yup from 'yup';
 
 import { BackButton } from '../../components/BackButton';
@@ -36,6 +37,8 @@ import {
 } from './styles';
 
 export function Profile() {
+  const netInfo = useNetInfo();
+
   const { user, signOut, updatedUser } = useAuth();
 
   const [option, setOption] = useState<'dataEdit' | 'passwordEdit'>('dataEdit');
@@ -51,7 +54,14 @@ export function Profile() {
   }
 
   function handleOptionChange(selectedOption: 'dataEdit' | 'passwordEdit') {
-    setOption(selectedOption);
+    if (netInfo.isConnected === false && selectedOption === 'passwordEdit') {
+      Alert.alert(
+        'Você está offline',
+        'Para mudar a senha, conecte-se a internet'
+      );
+    } else {
+      setOption(selectedOption);
+    }
   }
 
   async function handleAvatarSelect() {
